@@ -1,0 +1,11 @@
+# Example of a ranking file
+
+# A
+Player 1:80
+Player 2:80
+
+# B
+Player 3:60
+
+# C
+Player 4:20
