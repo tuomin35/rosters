@@ -163,6 +163,12 @@ public class Rosters {
         if ( punainen.contains("Tepi") ) {
             swap(punainen, valkoinen);
         }
+        else if ( punainen.contains("Eero") ) {
+            swap(punainen, valkoinen);
+        }
+        else if ( valkoinen.contains("Seppo") ) {
+            swap(punainen, valkoinen);
+        }
         if ( debug ) {
             System.out.println("[DEBUG] Team average ranking: punainen = " + teamAverageRanking(punainen)
                     + ", valkoinen = " + teamAverageRanking(valkoinen) + "\n");
