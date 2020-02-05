@@ -1,10 +1,13 @@
 # rosters
 
-Algoritmi:
+Algoritmi (classic):
  - Pelaajat järjestetään paremmuusjärjestykseen. Parilliset ja parittomat pelaajat eri puolille.
  - Tasatilanteessa ratkaisee ilmottautumisjärjestys.
  - Joukkueen pelaajat järjestetään aakkosjärjestykseen.
  - Tepin joukkue saa aina valkoiset paidat.
+
+Algoritmi (fair):
+ - Joukkueiden kaksi parasta pelaajaa vaihdetaan keskenään. Muuten sama kuin 'classic'
 
 Satunnaisuus:
  - Jakoihin voi lisätä satunnaisuutta syöteparametrilla "-r" tai "--random", jolloin liki samantasoiset pelaajat arvotaan satunnaiseen järjestykseen.
