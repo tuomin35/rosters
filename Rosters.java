@@ -180,7 +180,7 @@ public class Rosters {
             swap(punainen, valkoinen);
         }
         if ( debug ) {
-            System.out.println(String.format("[DEBUG] Selected algorithm: %s", fair ? "fair" : "classic"));
+            System.out.println(String.format("[DEBUG] Selected algorithm: %s \n", fair ? "fair" : "classic"));
             System.out.println(String.format("[DEBUG] Team average ranking: punainen = %d, valkoinen = %d \n",
                     teamAverageRanking(punainen), teamAverageRanking(valkoinen)));
         }
