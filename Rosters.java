@@ -30,6 +30,8 @@ public class Rosters {
 
     private static final String ARGUMENT_DEBUG1 = "-d";
     private static final String ARGUMENT_DEBUG2 = "--debug";
+    private static final String ARGUMENT_FAIR1 = "-f";
+    private static final String ARGUMENT_FAIR2 = "--fair";
     private static final String ARGUMENT_RANDOM1 = "-r";
     private static final String ARGUMENT_RANDOM2 = "--random";
     private static final int RANDOM_DELTA_DEFAULT = 5;
@@ -37,12 +39,16 @@ public class Rosters {
     public static void main(String[] args) {
 
         boolean debug = false;
+        boolean fair = false;
         boolean random = false;
         int random_delta = RANDOM_DELTA_DEFAULT;
         if ( args.length > 0 ) {
             for (String arg : args) {
                 if ( arg.equals(ARGUMENT_DEBUG1) || arg.equals(ARGUMENT_DEBUG2) ) {
                     debug = true;
+                }
+                if ( arg.equals(ARGUMENT_FAIR1) || arg.equals(ARGUMENT_FAIR2) ) {
+                    fair = true;
                 }
                 if ( arg.equals(ARGUMENT_RANDOM1) || arg.equals(ARGUMENT_RANDOM2) ) {
                     random = true;
@@ -57,7 +63,7 @@ public class Rosters {
             List<String> players = readPlayersFile();
             Map<String, Integer> ranking = readRankingFile();
             sortPlayers(players, ranking, random, random_delta);
-            writeRostersFile(players, random, random_delta, debug);
+            writeRostersFile(players, fair, random, random_delta, debug);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -141,8 +147,12 @@ public class Rosters {
         return cumulativeRanking / team.size();
     }
 
-    private static void writeRostersFile(List<String> players, boolean random, int random_delta, boolean debug)
-            throws IOException {
+    private static void writeRostersFile(List<String> players, boolean fair, boolean random, int random_delta, boolean debug) throws IOException {
+
+        if ( fair ) {
+            // rankingin kaksi parasta vaihtavat paikkaa (tasaisemmat jaot)
+            Collections.swap(players, 0, 1);
+        }
 
         // rankingin parilliset pelaajat punaiselle
         List<String> punainen = new ArrayList<String>();
@@ -170,6 +180,7 @@ public class Rosters {
             swap(punainen, valkoinen);
         }
         if ( debug ) {
+            System.out.println(String.format("[DEBUG] Selected algorithm: %s", fair ? "fair" : "classic"));
             System.out.println(String.format("[DEBUG] Team average ranking: punainen = %d, valkoinen = %d \n",
                     teamAverageRanking(punainen), teamAverageRanking(valkoinen)));
         }
