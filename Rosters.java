@@ -170,8 +170,8 @@ public class Rosters {
             swap(punainen, valkoinen);
         }
         if ( debug ) {
-            System.out.println("[DEBUG] Team average ranking: punainen = " + teamAverageRanking(punainen)
-                    + ", valkoinen = " + teamAverageRanking(valkoinen) + "\n");
+            System.out.println(String.format("[DEBUG] Team average ranking: punainen = %d, valkoinen = %d \n",
+                    teamAverageRanking(punainen), teamAverageRanking(valkoinen)));
         }
 
         // muodostetaan tiedoston sisältö
